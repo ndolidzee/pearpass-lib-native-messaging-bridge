@@ -1,11 +1,11 @@
-import os from 'bare-os'
-import path from 'bare-path'
+import os from 'os'
+import path from 'path'
 
 import { getIpcPath } from './getIpcPath'
 
-jest.mock('bare-os')
-jest.mock('bare-path')
-jest.mock('pearpass-lib-constants', () => ({
+jest.mock('os')
+jest.mock('path')
+jest.mock('@tetherto/pearpass-lib-constants', () => ({
   IPC_SOCKET_DIR_NAME: '.pearpass'
 }))
 

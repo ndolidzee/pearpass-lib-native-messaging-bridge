@@ -1,8 +1,10 @@
-import fs from 'bare-fs'
-import path from 'bare-path'
+import fs from 'fs'
+import os from 'os'
+import path from 'path'
 
-jest.mock('bare-fs')
-jest.mock('bare-path')
+jest.mock('fs')
+jest.mock('os')
+jest.mock('path')
 
 // We need to control DEBUG_MODE per test
 let mockDebugMode = false
@@ -16,23 +18,15 @@ jest.mock('../constants/debugMode', () => ({
 import { log } from './log'
 
 describe('log', () => {
-  const OLD_ENV = process.env
+  const HOME_DIR = '/home/testuser'
+  const expectedLogDir = `${HOME_DIR}/.pearpass/logs`
+  const expectedLogFile = `${expectedLogDir}/native-messaging-bridge.log`
 
   beforeEach(() => {
     jest.clearAllMocks()
-    mockDebugMode = false // Reset to false by default
-    // Reset __dirname for path.dirname
-    global.__dirname =
-      '/Users/torkinos-m4/work/tether/pearpass/pearpass-lib-native-messaging-bridge/src/utils'
-    // Mock path methods - dirname should return parent directory
-    path.dirname.mockReturnValue(
-      '/Users/torkinos-m4/work/tether/pearpass/pearpass-lib-native-messaging-bridge/src'
-    )
+    mockDebugMode = false
+    os.homedir.mockReturnValue(HOME_DIR)
     path.join.mockImplementation((...args) => args.join('/'))
-  })
-
-  afterAll(() => {
-    process.env = OLD_ENV
   })
 
   it('does nothing when DEBUG_MODE is false', () => {
@@ -43,15 +37,10 @@ describe('log', () => {
   })
 
   it('writes log when DEBUG_MODE is true', () => {
-    // Enable DEBUG_MODE for this test
     mockDebugMode = true
     fs.existsSync.mockReturnValue(false)
 
     log('DEBUG', 'Debug message test')
-
-    const expectedLogDir =
-      '/Users/torkinos-m4/work/tether/pearpass/pearpass-lib-native-messaging-bridge/src/logs'
-    const expectedLogFile = `${expectedLogDir}/native-messaging-bridge.log`
 
     expect(fs.existsSync).toHaveBeenCalledWith(expectedLogDir)
     expect(fs.mkdirSync).toHaveBeenCalledWith(expectedLogDir, {
@@ -66,7 +55,6 @@ describe('log', () => {
   })
 
   it('handles errors gracefully', () => {
-    // Enable DEBUG_MODE for this test
     mockDebugMode = true
     jest.spyOn(console, 'error').mockImplementation(() => {})
     fs.existsSync.mockImplementation(() => {
