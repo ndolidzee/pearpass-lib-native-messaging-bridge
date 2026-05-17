@@ -23,6 +23,7 @@ export const COMMAND_DEFINITIONS = [
   { id: 1008, name: 'vaultsList' },
   { id: 1009, name: 'vaultsAdd' },
   { id: 1010, name: 'vaultsClose' },
+  { id: 1044, name: 'removeVault' },
 
   // Active vault commands
   { id: 1011, name: 'activeVaultInit' },
@@ -34,6 +35,7 @@ export const COMMAND_DEFINITIONS = [
   { id: 1017, name: 'activeVaultClose' },
   { id: 1018, name: 'activeVaultCreateInvite' },
   { id: 1019, name: 'activeVaultDeleteInvite' },
+  { id: 1046, name: 'activeVaultGetWriterKey' },
 
   // Password and encryption key commands
   { id: 1020, name: 'hashPassword' },
@@ -69,7 +71,10 @@ export const COMMAND_DEFINITIONS = [
   { id: 1025, name: 'pairActiveVault' },
   { id: 1026, name: 'initListener' },
   { id: 1027, name: 'closeAllInstances' },
-  { id: 1028, name: 'cancelPairActiveVault' }
+  { id: 1028, name: 'cancelPairActiveVault' },
+
+  // Server-pushed events (fire-and-forget, server -> bridge)
+  { id: 1045, name: 'onVaultAccessRevoked', send: true }
 ]
 
 /** @type {string[]} */
