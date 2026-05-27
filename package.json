@@ -1,5 +1,5 @@
 {
-  "name": "pearpass-lib-native-messaging-bridge",
+  "name": "@tetherto/pearpass-lib-native-messaging-bridge",
   "version": "0.0.2",
   "description": "Native messaging bridge for PearPass browser extension",
   "main": "index.js",
