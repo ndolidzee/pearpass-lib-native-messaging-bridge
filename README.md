@@ -23,6 +23,14 @@ Native messaging bridge for PearPass browser extension. This library enables sec
 - **Error Handling**: Comprehensive error handling with timeouts and fallback mechanisms
 - **Event-Driven Design**: Uses EventEmitter pattern for clean message handling
 
+## Installation
+
+Install the package using npm:
+
+```bash
+npm install git+https://github.com/tetherto/pearpass-lib-native-messaging-bridge.git
+```
+
 ## Usage Examples
 
 ### Basic Usage
