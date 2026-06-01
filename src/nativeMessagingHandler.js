@@ -313,7 +313,6 @@ export class NativeMessagingHandler extends EventEmitter {
     log('INFO', 'Native messaging handler stopped')
   }
 
-  // eslint-disable-next-line no-unused-vars
   addListener(_eventName, _listener) {
     return undefined
   }
@@ -326,47 +325,38 @@ export class NativeMessagingHandler extends EventEmitter {
     return 0
   }
 
-  // eslint-disable-next-line no-unused-vars
   listenerCount(_eventName, _listener) {
     return 0
   }
 
-  // eslint-disable-next-line no-unused-vars
   listeners(_eventName) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   off(_eventName, _listener) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   once(_eventName, _listener) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   prependListener(_eventName, _listener) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   prependOnceListener(_eventName, _listener) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   rawListeners(_eventName) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   removeAllListeners(_eventName) {
     return undefined
   }
 
-  // eslint-disable-next-line no-unused-vars
   setMaxListeners(_n) {
     return undefined
   }
